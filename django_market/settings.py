@@ -123,6 +123,8 @@ class Common(Configuration):
 
     STATIC_URL = '/static/'
 
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 class Dev(Common):
     pass
