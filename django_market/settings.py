@@ -76,34 +76,7 @@ class Common(Configuration):
     # Database
     # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-            'NAME': 'products',
-            'USER': 'postgres',
-            'PASSWORD': '12345678',
-        }
-    }
-
-    # Password validation
-    # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
-
-    AUTH_PASSWORD_VALIDATORS = [
-        {
-            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-        },
-        {
-            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        },
-        {
-            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-        },
-        {
-            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-        },
-    ]
+    DATABASES = values.DatabaseURLValue('postgres://postgres:12345678@localhost/products')
 
     # Internationalization
     # https://docs.djangoproject.com/en/2.0/topics/i18n/
