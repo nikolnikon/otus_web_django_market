@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 import os
 import sys
+from dotenv import load_dotenv
 
 if __name__ == "__main__":
+    load_dotenv()
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_market.settings")
     os.environ.setdefault("DJANGO_CONFIGURATION", "Dev")
     try:

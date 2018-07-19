@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
 from configurations import Configuration, values
 
 
@@ -30,8 +29,7 @@ class Common(Configuration):
         'django.contrib.admin',
         'django.contrib.auth',
         'django.contrib.contenttypes',
-        # 'django.contrib.sessions',
-        # 'django.contrib.messages',
+        'django.contrib.sessions',
         'django.contrib.staticfiles',
 
         'products.apps.ProductsConfig',
@@ -52,7 +50,7 @@ class Common(Configuration):
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [],
+            'DIRS': [os.path.join(BASE_DIR, 'templates')],
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [
@@ -67,17 +65,11 @@ class Common(Configuration):
 
     WSGI_APPLICATION = 'django_market.wsgi.application'
 
-    # Database
-    # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-    DATABASES = values.DatabaseURLValue('postgres://postgres:12345678@localhost/products')
-
-    # Internationalization
-    # https://docs.djangoproject.com/en/2.0/topics/i18n/
+    DATABASES = values.DatabaseURLValue('postgres://postgres:12345678@localhost/django_market')
 
     LANGUAGE_CODE = 'en-us'
 
-    TIME_ZONE = 'UTC'
+    TIME_ZONE = 'Europe/Moscow'
 
     USE_I18N = True
 
@@ -85,22 +77,18 @@ class Common(Configuration):
 
     USE_TZ = True
 
-    # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
     STATIC_URL = '/static/'
 
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    MEDIA_URL = '/media/'
 
 
 class Dev(Common):
-    # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'dev'
-    # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
 
 
 class Prod(Common):
     DEBUG = False
-    # TEMPLATE_DEBUG = DEBUG
     SECRET_KEY = values.SecretValue()

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views import generic
 
 from products.models import Product
@@ -10,4 +9,3 @@ class ProductListView(generic.ListView):
 
 class ProductDetailView(generic.DetailView):
     model = Product
-

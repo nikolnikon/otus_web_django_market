@@ -1,0 +1,8 @@
+- model: products.category
+  pk: 1
+  fields:
+    name: Обувь для бега
+- model: products.category
+  pk: 2
+  fields:
+    name: Электроника
