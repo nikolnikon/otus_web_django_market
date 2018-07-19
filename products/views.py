@@ -1,11 +1,11 @@
-from django.views import generic
+from django.views.generic import ListView, DetailView
 
 from products.models import Product
 
 
-class ProductListView(generic.ListView):
+class ProductListView(ListView):
     model = Product
 
 
-class ProductDetailView(generic.DetailView):
+class ProductDetailView(DetailView):
     model = Product
