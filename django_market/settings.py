@@ -14,16 +14,10 @@ import os
 from configurations import Configuration, values
 
 
-class Common(Configuration):
-    # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+class Base(Configuration):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    # Quick-start development settings - unsuitable for production
-    # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
     ALLOWED_HOSTS = []
-
-    # Application definition
 
     INSTALLED_APPS = [
         'django.contrib.admin',
@@ -83,12 +77,12 @@ class Common(Configuration):
     MEDIA_URL = '/media/'
 
 
-class Dev(Common):
+class Dev(Base):
     SECRET_KEY = 'dev'
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
 
 
-class Prod(Common):
+class Prod(Base):
     DEBUG = False
     SECRET_KEY = values.SecretValue()
